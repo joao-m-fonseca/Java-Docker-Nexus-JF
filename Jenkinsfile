@@ -12,7 +12,7 @@ pipeline {
         stage ('Build Jar') {
             steps {
                 sh 'javac *.java '
-                sh 'jar cfe calculator.jar Calculator *.class'
+                sh 'jar cfe calculator.jar Calculator-JF *.class'
                 }
         }
         stage ('Build Docker Image') {
@@ -33,7 +33,7 @@ pipeline {
         stage("Publish to Nexus Repository Manager") {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'nexus-user-credentials', passwordVariable: 'NEXUSPASS', usernameVariable: 'NEXUSUSER')])  {
-                sh ' curl -v -u "$NEXUSUSER:$NEXUSPASS" --upload-file *.jar http://nexus:8081/repository/raw-nexus/'
+                sh ' curl -v -u "$NEXUSUSER:$NEXUSPASS" --upload-file calculator.jar http://nexus:8081/repository/raw-nexus/'
                 }
             }
         }
