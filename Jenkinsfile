@@ -28,7 +28,7 @@ pipeline {
                 sh 'docker push localhost:8082/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} '
                 sh 'docker run -d -p ${DOCKER_CONTAINER_PORT}:8085  --name "${DOCKER_CONTAINER_NAME}" "${DOCKER_IMAGE_NAME}"'
                 }
-            //}
+            }
         }
         stage("Publish to Nexus Repository Manager") {
             steps {
