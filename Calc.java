@@ -9,13 +9,13 @@ public class Calc {
         double var2 = Double.parseDouble(args[2]);
         
         switch(operacao) {
-            case ("soma"):
+            case ("sum"):
                 System.out.println(var1 + var2); break;
             case ("sub"):
                 System.out.println(var1 - var2); break;
-            case ("mult"):
+            case ("times"):
                 System.out.println(var1 * var2); break;
-            case ("div"):
+            case ("division"):
                 System.out.println(var1 / var2); break;
             default:
                 System.out.println("Operacao Invalida");
