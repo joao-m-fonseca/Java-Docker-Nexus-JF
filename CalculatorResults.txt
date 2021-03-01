@@ -1,1 +1,0 @@
-The sum between 1.0 and 1.0 is equal to: 2.0
