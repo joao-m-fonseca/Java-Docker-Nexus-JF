@@ -11,33 +11,21 @@ My calculator has several functions, so with her you can perform the next operat
 - Subtration
 - Multiplication
 - Division
-- Power
-- Logarithm
-- Natural Logarithm
-- Square Root
-- Nth Root
-- Average
-- Variance
-- Covariance
-- Standard Deviation
-- Sine
-- Cosine
-- Tangent
-- Radias to Degress
-- Cotangent
-- Secant
-- Cosecant
-- Hyperbolic Sine
-
-Plus you can convert Celsius to Fahrenheit if you visit America, and verify if your loved number is a prime! 
 
 # Build and Test
-After initialize the calculator you are presented with a menu which show you all the functions you can do.
-Finally, but not least, this calculator saves all your operations in a txt file.
-
 This Java App is supported by openjdk-16.
 
 In order to build the docker iamge you just need to download the dockerfile open PS/Bash in the same directory and insert:
 docker build -t javaapp-app-name . 
+
+To run the calculator you need to perform the next step:
+
+java -jar calculator.jar soma 2 3 -> This will get you the result of 2 plus 3.
+
+The arguments to perform operation are:
+soma -> addition
+sub -> subtraction
+mult -> Times
+div -> division
 
 Brought you by: João Fonseca
