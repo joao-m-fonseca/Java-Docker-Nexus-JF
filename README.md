@@ -20,7 +20,7 @@ docker build -t javaapp-app-name .
 
 To run the calculator you need to perform the next step:
 
-java -jar calculator.jar soma 2 3 -> This will get you the result of 2 plus 3.
+java -jar calculator.jar sum 2 3 -> This will get you the result of 2 plus 3.
 
 The arguments to perform operations are:
 
@@ -30,6 +30,6 @@ sub -> Subtraction
 
 times -> Times
 
-division ->Division
+division -> Division
 
 Brought you by: João Fonseca
