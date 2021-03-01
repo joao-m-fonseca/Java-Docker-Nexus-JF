@@ -1,0 +1,49 @@
+pipeline {
+    agent {
+        label "mvn"
+    }
+
+    parameters { 
+        string(name: 'DOCKER_IMAGE_NAME', defaultValue: 'calculatorapp', description: 'Adicionar um nome a imagem docker')
+        string(name: 'DOCKER_IMAGE_TAG', defaultValue: 'v1.0', description: 'Adicionar uma Tag')
+        string(name: 'DOCKER_CONTAINER_NAME', defaultValue: 'calculatorapp', description: 'Adicionar um nome do container')
+        string(name: 'DOCKER_CONTAINER_PORT', defaultValue: '8085', description: 'Adicionar o Port do container')
+    }
+    stages {
+        stage ('Build Jar') {
+            steps {
+                sh 'javac *.java '
+                sh 'jar cfe calculator.jar Calculator *.class'
+                }
+            }
+        }
+        stage ('Build Docker Image') {
+            steps {
+                sh 'docker build -t "${DOCKER_IMAGE_NAME}" .'
+                }
+            }
+        stage ('Push Docker Image') {
+            steps {
+                //withCredentials([usernamePassword(credentialsId: 'docker', passwordVariable: 'DOCKERPASS', usernameVariable: 'DOCKERUSER')]) {
+                sh ' docker login -u admin -p admin localhost:8082'
+                sh ' docker tag ${DOCKER_IMAGE_NAME} localhost:8082/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} '
+                sh 'docker push localhost:8082/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} '
+                sh 'docker run -d -p ${DOCKER_CONTAINER_PORT}:8085 ${DOCKER_CONTAINER_NAME} '
+                }
+            //}
+        }
+        stage("Publish to Nexus Repository Manager") {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'nexus-user-credentials', passwordVariable: 'NEXUSPASS', usernameVariable: 'NEXUSUSER')])  {
+                sh ' curl -v -u "$NEXUSUSER:$NEXUSPASS" --upload-file *.jar http://nexus:8081/repository/raw-nexus/'
+                }
+            }
+        }
+        stage ('CleanResources') {
+            steps
+            {
+                cleanWs()
+            }
+        }
+    }
+}
