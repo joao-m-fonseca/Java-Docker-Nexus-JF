@@ -15,7 +15,6 @@ pipeline {
                 sh 'javac *.java '
                 sh 'jar cfe calculator.jar Calculator *.class'
                 }
-            }
         }
         stage ('Build Docker Image') {
             steps {
