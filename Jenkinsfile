@@ -12,7 +12,7 @@ pipeline {
         stage ('Build Jar') {
             steps {
                 sh 'javac *.java '
-                sh 'jar cfe calculator.jar Calculator-JF *.class'
+                sh 'jar cfe calculator.jar CalculatorJF *.class'
                 }
         }
         stage ('Build Docker Image') {
