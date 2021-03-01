@@ -26,7 +26,7 @@ pipeline {
                 sh ' docker login -u admin -p admin localhost:8082'
                 sh ' docker tag ${DOCKER_IMAGE_NAME} localhost:8082/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} '
                 sh 'docker push localhost:8082/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} '
-                sh 'docker run -d -p ${DOCKER_CONTAINER_PORT}:8085 ${DOCKER_CONTAINER_NAME} '
+                sh 'docker run -d -p ${DOCKER_CONTAINER_PORT}:8085  --name "${DOCKER_CONTAINER_NAME}" "${DOCKER_IMAGE_NAME}'
                 }
             //}
         }
