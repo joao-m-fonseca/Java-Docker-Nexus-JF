@@ -2,7 +2,6 @@ pipeline {
     agent {
         label "mvn"
     }
-
     parameters { 
         string(name: 'DOCKER_IMAGE_NAME', defaultValue: 'calculatorapp', description: 'Adicionar um nome a imagem docker')
         string(name: 'DOCKER_IMAGE_TAG', defaultValue: 'v1.0', description: 'Adicionar uma Tag')
