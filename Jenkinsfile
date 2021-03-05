@@ -13,7 +13,7 @@ pipeline {
             steps {
                 sh 'javac *.java '
                 sh 'jar cfe Calculator.jar Calc *.class'
-                sh 'sonar:sonar \
+                sh 'jar cfe Calculator.jar Calc *.class sonar-scanner \
                     -Dsonar.projectKey=java-calculator \
                     -Dsonar.sources= ./ \
                     -Dsonar.host.url=http://sonarqube:9000 \
