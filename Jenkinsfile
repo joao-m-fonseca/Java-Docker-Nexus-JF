@@ -14,7 +14,7 @@ pipeline {
                 sh 'javac *.java '
                 sh 'jar cfe Calculator.jar Calc *.class'
                 withCredentials([string(credentialsId: 'Sonarqube-Server', variable: 'SONAR')]) {
-                sh  'sonar-scanner \
+                sh  'javac *.java sonar-scanner \
                     -Dsonar.projectKey=java-calculator \
                     -Dsonar.sources=. \
                     -Dsonar.host.url=http://localhost:9000 \
