@@ -13,12 +13,11 @@ pipeline {
             steps {
                 sh 'javac *.java '
                 sh 'jar cfe Calculator.jar Calc *.class'
-                sh ' sonar:sonar \
-                    -Dsonar.projectKey=java-calculator \
-                    -Dsonar.java.libraries= ./ \
-                    -Dsonar.sources= ./ \
+                withCredentials([string(credentialsId: 'Sonarqube-Server', variable: 'SONAR')]) {
+                sh  'mvn clean install sonar:sonar \
+                    -Dsonar.projectKey=Mvn-Project \
                     -Dsonar.host.url=http://sonarqube:9000 \
-                    -Dsonar.login=d8415d1b6f4cce484496b548398d33354140fc5a'
+                    -Dsonar.login=$SONAR'
                 }
         }
         stage ('Build Docker Image') {
