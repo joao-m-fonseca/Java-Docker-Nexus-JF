@@ -15,7 +15,7 @@ pipeline {
                 sh 'jar cfe Calculator.jar Calc *.class'
                 sh 'sonar-scanner \
                     -Dsonar.projectKey=java-calculator \
-                    -Dsonar.sources=. \
+                    -Dsonar.sources= ./ \
                     -Dsonar.host.url=http://localhost:9000 \
                     -Dsonar.login=d8415d1b6f4cce484496b548398d33354140fc5a'
                 }
