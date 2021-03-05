@@ -16,7 +16,7 @@ pipeline {
                 sh 'sonar:sonar \
                     -Dsonar.projectKey=java-calculator \
                     -Dsonar.sources= ./ \
-                    -Dsonar.host.url=http://localhost:9000 \
+                    -Dsonar.host.url=http://sonarqube:9000 \
                     -Dsonar.login=d8415d1b6f4cce484496b548398d33354140fc5a'
                 }
         }
