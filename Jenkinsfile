@@ -13,14 +13,15 @@ pipeline {
         stage ('Build Jar') {
             steps {
                 sh 'javac *.java '
-                sh "tool 'sonarqube-scanner'/bin/sonar-scanner  \
-                     -Dsonar.projectKey=java-calculator \
-                     -Dsonar.java.binaries=build/classes \
-                     -Dsonar.java.libraries=**/*.jar \
-                     -Dsonar.java.libraries=**/*.jar \
-                     -Dsonar.projectVersion=${BUILD_NUMBER}"
                 sh 'jar cfe Calculator.jar Calc *.class'
              }
+        }
+        stage("SonarQube analysis") {
+            steps {
+        script {
+            sonarScanner('category-service')
+               }
+            }
         }
         stage ('Build Docker Image') {
             steps {
@@ -51,4 +52,19 @@ pipeline {
             }
         }
     }
+}
+
+def sonarScanner(projectKey) {
+        def scannerHome = tool 'sonarqube-scanner'
+          withSonarQubeEnv("sonarqube") {
+              if(fileExists("sonar-project.properties")) {
+                  sh "${scannerHome}/bin/sonar-scanner"
+        }
+              else {
+                  sh "${scannerHome}/bin/sonar-scanner -Dsonar.host.url=http://sonarqube:9000 -Dsonar.login=d8415d1b6f4cce484496b548398d33354140fc5a -Dsonar.projectKey=java-calculator -Dsonar.java.libraries=**/*.jar -Dsonar.projectVersion=${BUILD_NUMBER}"
+        }
+    }
+   // timeout(time: 10, unit: 'MINUTES') {
+     //   waitForQualityGate abortPipeline: true
+    //}
 }
