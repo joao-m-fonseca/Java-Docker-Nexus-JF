@@ -6,7 +6,7 @@ pipeline {
         string(name: 'DOCKER_IMAGE_NAME', defaultValue: 'calculatorapp', description: 'Adicionar um nome a imagem docker')
         string(name: 'DOCKER_IMAGE_TAG', defaultValue: 'v1.0', description: 'Adicionar uma Tag')
         string(name: 'DOCKER_CONTAINER_NAME', defaultValue: 'calculatorapp', description: 'Adicionar um nome do container')
-        string(name: 'BUILD_NUMBER', defaultValue: '1.0', description: 'Adicionar um build number')
+        string(name: 'BUILD_NUMBER', defaultValue: 'v1.0', description: 'Adicionar um build number')
     //    string(name: 'DOCKER_CONTAINER_PORT', defaultValue: '8085', description: 'Adicionar o Port do container')
     }
     stages {
@@ -19,7 +19,6 @@ pipeline {
                      -Dsonar.java.libraries=**/*.jar \
                      -Dsonar.java.libraries=**/*.jar \
                      -Dsonar.projectVersion=${BUILD_NUMBER}"
-                    }
                 sh 'jar cfe Calculator.jar Calc *.class'
              }
         stage ('Build Docker Image') {
