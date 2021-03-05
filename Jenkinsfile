@@ -12,6 +12,19 @@ pipeline {
         stage ('Build Jar') {
             steps {
                 sh 'javac *.java '
+                def sonarScanner(projectKey) {
+                def scannerHome = tool 'sonarqube-scanner'    withSonarQubeEnv("sonarqube") {        if(fileExists("sonar-project.properties")) {
+                     sh "${scannerHome}/bin/sonar-scanner"
+                     }
+                     else {
+                        sh "${scannerHome}/bin/sonar-scanner - \
+                            - Dsonar.projectKey=${projectKey} \
+                             -Dsonar.java.binaries=build/classes \
+                             -Dsonar.java.libraries=**/*.jar \
+                             -Dsonar.projectVersion=${BUILD_NUMBER}"
+                    }
+                }
+            }
                 sh 'jar cfe Calculator.jar Calc *.class'
                 withCredentials([string(credentialsId: 'Sonarqube-Server', variable: 'SONAR')]) {
                 sh  ' sonar-scanner ./ \
