@@ -16,7 +16,7 @@ pipeline {
                 sh "sonnarqube-scanner/bin/sonar-scanner  \
                      -Dsonar.projectKey=java-calculator \
                      -Dsonar.java.binaries=build/classes \
-                     -Dsonar.java.libraries=**/*.jar
+                     -Dsonar.java.libraries=**/*.jar \
                      -Dsonar.java.libraries=**/*.jar \
                      -Dsonar.projectVersion=${BUILD_NUMBER}"
                     }
