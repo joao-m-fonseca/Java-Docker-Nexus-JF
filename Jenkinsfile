@@ -21,6 +21,7 @@ pipeline {
                      -Dsonar.projectVersion=${BUILD_NUMBER}"
                 sh 'jar cfe Calculator.jar Calc *.class'
              }
+        }
         stage ('Build Docker Image') {
             steps {
                 sh 'docker build -t "${DOCKER_IMAGE_NAME}" .'
@@ -49,6 +50,5 @@ pipeline {
                 cleanWs()
             }
         }
-    }
     }
 }
