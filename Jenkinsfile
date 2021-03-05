@@ -6,36 +6,22 @@ pipeline {
         string(name: 'DOCKER_IMAGE_NAME', defaultValue: 'calculatorapp', description: 'Adicionar um nome a imagem docker')
         string(name: 'DOCKER_IMAGE_TAG', defaultValue: 'v1.0', description: 'Adicionar uma Tag')
         string(name: 'DOCKER_CONTAINER_NAME', defaultValue: 'calculatorapp', description: 'Adicionar um nome do container')
+        string(name: 'BUILD_NUMBER', defaultValue: '1.0', description: 'Adicionar um build number')
     //    string(name: 'DOCKER_CONTAINER_PORT', defaultValue: '8085', description: 'Adicionar o Port do container')
     }
     stages {
         stage ('Build Jar') {
             steps {
                 sh 'javac *.java '
-                def sonarScanner(projectKey) {
-                def scannerHome = tool 'sonarqube-scanner'    withSonarQubeEnv("sonarqube") {        if(fileExists("sonar-project.properties")) {
-                     sh "${scannerHome}/bin/sonar-scanner"
-                     }
-                     else {
-                        sh "${scannerHome}/bin/sonar-scanner - \
-                            - Dsonar.projectKey=${projectKey} \
-                             -Dsonar.java.binaries=build/classes \
-                             -Dsonar.java.libraries=**/*.jar \
-                             -Dsonar.projectVersion=${BUILD_NUMBER}"
+                sh "sonnarqube-scanner/bin/sonar-scanner  \
+                     -Dsonar.projectKey=java-calculator \
+                     -Dsonar.java.binaries=build/classes \
+                     -Dsonar.java.libraries=**/*.jar
+                     -Dsonar.java.libraries=**/*.jar \
+                     -Dsonar.projectVersion=${BUILD_NUMBER}"
                     }
-                }
-            }
                 sh 'jar cfe Calculator.jar Calc *.class'
-                withCredentials([string(credentialsId: 'Sonarqube-Server', variable: 'SONAR')]) {
-                sh  ' sonar-scanner ./ \
-                    -Dsonar.java.binaries = ./ \
-                    -Dsonar.projectKey=java-calculator \
-                    -Dsonar.sources=. \
-                    -Dsonar.host.url=http://localhost:9000 \
-                    -Dsonar.login=$SONAR'
-                }
-            }
-        }
+             }
         stage ('Build Docker Image') {
             steps {
                 sh 'docker build -t "${DOCKER_IMAGE_NAME}" .'
