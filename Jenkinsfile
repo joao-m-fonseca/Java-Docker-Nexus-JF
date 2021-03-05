@@ -14,9 +14,10 @@ pipeline {
                 sh 'javac *.java '
                 sh 'jar cfe Calculator.jar Calc *.class'
                 withCredentials([string(credentialsId: 'Sonarqube-Server', variable: 'SONAR')]) {
-                sh  'mvn clean install sonar:sonar \
-                    -Dsonar.projectKey=Mvn-Project \
-                    -Dsonar.host.url=http://sonarqube:9000 \
+                sh  'sonar-scanner \
+                    -Dsonar.projectKey=java-calculator \
+                    -Dsonar.sources=. \
+                    -Dsonar.host.url=http://localhost:9000 \
                     -Dsonar.login=$SONAR'
                 }
             }
