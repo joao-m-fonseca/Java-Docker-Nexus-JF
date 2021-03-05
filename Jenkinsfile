@@ -56,7 +56,7 @@ pipeline {
 
 def sonarScanner(projectKey) {
         def scannerHome = tool 'sonar-scanner'
-          withSonarQubeEnv("sonarqube") {
+          withSonarQubeEnv("Sonarqube-Server") {
               if(fileExists("sonar-project.properties")) {
                   sh "${scannerHome}/bin/sonar-scanner"
         }
