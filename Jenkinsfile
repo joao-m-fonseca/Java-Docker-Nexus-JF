@@ -13,7 +13,7 @@ pipeline {
         stage ('Build Jar') {
             steps {
                 sh 'javac *.java '
-                sh "sonnarqube-scanner/bin/sonar-scanner  \
+                sh "sonarqube-scanner/bin/sonar-scanner  \
                      -Dsonar.projectKey=java-calculator \
                      -Dsonar.java.binaries=build/classes \
                      -Dsonar.java.libraries=**/*.jar \
