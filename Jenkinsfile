@@ -58,13 +58,17 @@ def sonarScanner(projectKey) {
         def scannerHome = tool 'sonar-scanner'
           withSonarQubeEnv("SonarQube") {
               if(fileExists("sonar-project.properties")) {
-              withCredentials([string(credentialsId: 'Sonarqube-Server', variable: 'SONAR')]) {
+              
                   sh "${scannerHome}/bin/sonar-scanner"
         }
-              else {
+        withCredentials([string(credentialsId: 'Sonarqube-Server', variable: 'SONAR')]) {
+            else {
+            withCredentials([string(credentialsId: 'Sonarqube-Server', variable: 'SONAR')]) {
                   sh "${scannerHome}/bin/sonar-scanner -Dsonar.host.url=http://sonarqube:9000 -Dsonar.login=$SONAR -Dsonar.projectKey=java-calculator -Dsonar.java.libraries=**/*.jar -Dsonar.projectVersion=${BUILD_NUMBER}"
         }
-    }
+    } 
+  }
+}
    // timeout(time: 10, unit: 'MINUTES') {
      //   waitForQualityGate abortPipeline: true
     //}
