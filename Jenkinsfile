@@ -19,6 +19,7 @@ pipeline {
                     -Dsonar.host.url=http://sonarqube:9000 \
                     -Dsonar.login=$SONAR'
                 }
+            }
         }
         stage ('Build Docker Image') {
             steps {
