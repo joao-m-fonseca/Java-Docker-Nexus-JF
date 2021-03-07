@@ -1,0 +1,485 @@
+Skip to content <#skip2content>
+[Jenkins]Jenkins <http://localhost:8080/>
+[Jenkins]Jenkins <http://localhost:8080/>
+
+<https://jenkins.io/redirect/search-box>
+
+  *
+  *
+  *
+  *
+  *
+  *
+  *
+  *
+  *
+*
+
+2 <#>
+
+admin <http://localhost:8080/user/admin>
+
+log out <http://localhost:8080/logout>
+
+  * Dashboard <http://localhost:8080/>
+  *
+  * Calculator App Jenkins
+    <http://localhost:8080/job/Calculator%20App%20Jenkins/>
+  *
+  * #57 <http://localhost:8080/job/Calculator%20App%20Jenkins/57/>
+*
+
+Back to Project <http://localhost:8080/job/Calculator%20App%20Jenkins/>
+Status <http://localhost:8080/job/Calculator%20App%20Jenkins/57/>
+Changes <http://localhost:8080/job/Calculator%20App%20Jenkins/57/changes>
+Console Output
+<http://localhost:8080/job/Calculator%20App%20Jenkins/57/console>
+View as plain text
+<http://localhost:8080/job/Calculator%20App%20Jenkins/57/consoleText>
+Edit Build Information
+<http://localhost:8080/job/Calculator%20App%20Jenkins/57/configure>
+Delete build ‘#57’
+<http://localhost:8080/job/Calculator%20App%20Jenkins/57/confirmDelete>
+Parameters
+<http://localhost:8080/job/Calculator%20App%20Jenkins/57/parameters>
+Git Build Data <http://localhost:8080/job/Calculator%20App%20Jenkins/57/git>
+Open Blue Ocean
+<http://localhost:8080/blue/organizations/jenkins/Calculator%20App%20Jenkins/detail/Calculator%20App%20Jenkins/57/>
+Restart from Stage
+<http://localhost:8080/job/Calculator%20App%20Jenkins/57/restart>
+Replay <http://localhost:8080/job/Calculator%20App%20Jenkins/57/replay>
+Pipeline Steps
+<http://localhost:8080/job/Calculator%20App%20Jenkins/57/flowGraphTable>
+Workspaces <http://localhost:8080/job/Calculator%20App%20Jenkins/57/ws>
+Previous Build
+<http://localhost:8080/job/Calculator%20App%20Jenkins/56/console>
+
+
+  SuccessConsole Output
+
+Started by user admin <http://localhost:8080/user/admin>
+Obtained Jenkinsfile from git https://github.com/joao-m-fonseca/Java-Docker-Nexus-JF.git <https://github.com/joao-m-fonseca/Java-Docker-Nexus-JF.git>
+Running in Durability level: MAX_SURVIVABILITY
+[Pipeline] Start of Pipeline (hide <#>)
+[Pipeline] node (hide <#>)
+Running on mvn-agent <http://localhost:8080/computer/mvn-agent/> in /home/jenkins/agent/workspace/Calculator App Jenkins
+[Pipeline] { (hide <#>)
+[Pipeline] stage (hide <#>)
+[Pipeline] { (Declarative: Checkout SCM) (hide <#>)
+[Pipeline] checkout (hide <#>)
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Avoid second fetch
+Checking out Revision b33111ff12e9208ad1f3ce9ea9cbba43faa19270 (refs/remotes/origin/main)
+Cloning repository https://github.com/joao-m-fonseca/Java-Docker-Nexus-JF.git <https://github.com/joao-m-fonseca/Java-Docker-Nexus-JF.git>
+ > git init /home/jenkins/agent/workspace/Calculator App Jenkins # timeout=10
+Fetching upstream changes from https://github.com/joao-m-fonseca/Java-Docker-Nexus-JF.git <https://github.com/joao-m-fonseca/Java-Docker-Nexus-JF.git>
+ > git --version # timeout=10
+ > git --version # 'git version 2.20.1'
+ > git fetch --tags --force --progress -- https://github.com/joao-m-fonseca/Java-Docker-Nexus-JF.git <https://github.com/joao-m-fonseca/Java-Docker-Nexus-JF.git> +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/joao-m-fonseca/Java-Docker-Nexus-JF.git <https://github.com/joao-m-fonseca/Java-Docker-Nexus-JF.git> # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f b33111ff12e9208ad1f3ce9ea9cbba43faa19270 # timeout=10
+Commit message: "Jenkinsfile v0.41"
+ > git rev-list --no-walk 95a7abc1d5ab6ccb1c45771ba03ee4d51e6a2ae5 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv (hide <#>)
+[Pipeline] { (hide <#>)
+[Pipeline] stage (hide <#>)
+[Pipeline] { (Build Jar) (hide <#>)
+[Pipeline] sh (hide <#>)
++ javac Calc.java
+[Pipeline] sh (hide <#>)
++ jar cfe Calculator.jar Calc Calc.class
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage (hide <#>)
+[Pipeline] { (SonarQube analysis) (hide <#>)
+[Pipeline] script (hide <#>)
+[Pipeline] { (hide <#>)
+[Pipeline] tool (hide <#>)
+[Pipeline] withSonarQubeEnv (hide <#>)
+Injecting SonarQube environment variables using the configuration: SonarQube
+[Pipeline] { (hide <#>)
+[Pipeline] fileExists (hide <#>)
+[Pipeline] withCredentials (hide <#>)
+Masking supported pattern matches of $SONAR
+[Pipeline] { (hide <#>)
+[Pipeline] sh (hide <#>)
+Warning: A secret was passed to "sh" using Groovy String interpolation, which is insecure.
+		 Affected argument(s) used the following variable(s): [SONAR]
+		 See https://jenkins.io/redirect/groovy-string-interpolation <https://jenkins.io/redirect/groovy-string-interpolation> for details.
++ /home/jenkins/agent/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonar-scanner/bin/sonar-scanner -Dsonar.host.url=http://sonarqube:9000 <http://sonarqube:9000/> -Dsonar.login=**** -Dsonar.projectKey=java-calculator '-Dsonar.java.libraries=**/*.jar' -Dsonar.projectVersion=v1.0
+INFO: Scanner configuration file: /home/jenkins/agent/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonar-scanner/conf/sonar-scanner.properties
+INFO: Project root configuration file: NONE
+INFO: SonarScanner 4.6.0.2311
+INFO: Java 11.0.9.1 Oracle Corporation (64-bit)
+INFO: Linux 4.19.128-microsoft-standard amd64
+INFO: User cache: /root/.sonar/cache
+INFO: Scanner configuration file: /home/jenkins/agent/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonar-scanner/conf/sonar-scanner.properties
+INFO: Project root configuration file: NONE
+INFO: Analyzing on SonarQube server 8.7.0
+INFO: Default locale: "en", source code encoding: "UTF-8" (analysis is platform dependent)
+INFO: Load global settings
+INFO: Load global settings (done) | time=192ms
+INFO: Server id: BF41A1F2-AXffOI8ZDyrNfLYlJZ4P
+INFO: User cache: /root/.sonar/cache
+INFO: Load/download plugins
+INFO: Load plugins index
+INFO: Load plugins index (done) | time=98ms
+INFO: Load/download plugins (done) | time=208ms
+INFO: Process project properties
+INFO: Process project properties (done) | time=0ms
+INFO: Execute project builders
+INFO: Execute project builders (done) | time=6ms
+INFO: Project key: java-calculator
+INFO: Base dir: /home/jenkins/agent/workspace/Calculator App Jenkins
+INFO: Working dir: /home/jenkins/agent/workspace/Calculator App Jenkins/.scannerwork
+INFO: Load project settings for component key: 'java-calculator'
+INFO: Load project settings for component key: 'java-calculator' (done) | time=40ms
+INFO: Load quality profiles
+INFO: Load quality profiles (done) | time=222ms
+INFO: Auto-configuring with CI 'Jenkins'
+INFO: Load active rules
+INFO: Load active rules (done) | time=2969ms
+INFO: Indexing files...
+INFO: Project configuration:
+INFO: 7 files indexed
+INFO: 0 files ignored because of scm ignore settings
+INFO: Quality profile for java: Sonar way
+INFO: ------------- Run sensors on module java-calculator
+INFO: Load metrics repository
+INFO: Load metrics repository (done) | time=36ms
+INFO: Sensor JavaSquidSensor [java]
+INFO: Configured Java source version (sonar.java.source): none
+INFO: JavaClasspath initialization
+INFO: JavaClasspath initialization (done) | time=30ms
+INFO: JavaTestClasspath initialization
+INFO: JavaTestClasspath initialization (done) | time=0ms
+INFO: Java Main Files AST scan
+INFO: 1 source files to be analyzed
+INFO: Load project repositories
+INFO: Load project repositories (done) | time=62ms
+INFO: 1/1 source files have been analyzed
+INFO: Java Main Files AST scan (done) | time=1797ms
+INFO: Java Test Files AST scan
+INFO: 0 source files to be analyzed
+INFO: Java Test Files AST scan (done) | time=1ms
+INFO: Java Generated Files AST scan
+INFO: 0/0 source files have been analyzed
+INFO: 0 source files to be analyzed
+INFO: Java Generated Files AST scan (done) | time=1ms
+INFO: 0/0 source files have been analyzed
+INFO: Sensor JavaSquidSensor [java] (done) | time=2364ms
+INFO: Sensor CSS Rules [cssfamily]
+INFO: No CSS, PHP, HTML or VueJS files are found in the project. CSS analysis is skipped.
+INFO: Sensor CSS Rules [cssfamily] (done) | time=1ms
+INFO: Sensor JaCoCo XML Report Importer [jacoco]
+INFO: 'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+INFO: No report imported, no coverage information will be imported by JaCoCo XML Report Importer
+INFO: Sensor JaCoCo XML Report Importer [jacoco] (done) | time=7ms
+INFO: Sensor C# Properties [csharp]
+INFO: Sensor C# Properties [csharp] (done) | time=1ms
+INFO: Sensor SurefireSensor [java]
+INFO: parsing [/home/jenkins/agent/workspace/Calculator App Jenkins/target/surefire-reports]
+INFO: Sensor SurefireSensor [java] (done) | time=3ms
+INFO: Sensor JavaXmlSensor [java]
+INFO: Sensor JavaXmlSensor [java] (done) | time=2ms
+INFO: Sensor HTML [web]
+INFO: Sensor HTML [web] (done) | time=4ms
+INFO: Sensor VB.NET Properties [vbnet]
+INFO: Sensor VB.NET Properties [vbnet] (done) | time=1ms
+INFO: ------------- Run sensors on project
+INFO: Sensor Zero Coverage Sensor
+INFO: Sensor Zero Coverage Sensor (done) | time=13ms
+INFO: Sensor Java CPD Block Indexer
+INFO: Sensor Java CPD Block Indexer (done) | time=16ms
+INFO: CPD Executor Calculating CPD for 1 file
+INFO: CPD Executor CPD calculation finished (done) | time=8ms
+INFO: Analysis report generated in 107ms, dir size=93 KB
+INFO: Analysis report compressed in 22ms, zip size=13 KB
+INFO: Analysis report uploaded in 48ms
+INFO: ANALYSIS SUCCESSFUL, you can browse http://sonarqube:9000/dashboard?id=java-calculator <http://sonarqube:9000/dashboard?id=java-calculator>
+INFO: Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+INFO: More about the report processing at http://sonarqube:9000/api/ce/task?id=AXgEwKUg4GwfW5STM2B5 <http://sonarqube:9000/api/ce/task?id=AXgEwKUg4GwfW5STM2B5>
+INFO: Analysis total time: 8.262 s
+INFO: ------------------------------------------------------------------------
+INFO: EXECUTION SUCCESS
+INFO: ------------------------------------------------------------------------
+INFO: Total time: 10.046s
+INFO: Final Memory: 9M/37M
+INFO: ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // withSonarQubeEnv
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage (hide <#>)
+[Pipeline] { (Build Docker Image) (hide <#>)
+[Pipeline] sh (hide <#>)
++ docker build -t calculatorapp .
+#1 [internal] load build definition from Dockerfile
+#1 sha256:326f7bfa697974b240dfcd6011cd64e7ef5c19483c7bac5fb99c634199dabbde
+#1 transferring dockerfile: 90B done
+#1 DONE 0.0s
+
+#2 [internal] load .dockerignore
+#2 sha256:783fd534ca13517c77fbff4ed6dfb6db56441d4a1f8e5118cb73d6fc43e72975
+#2 transferring context: 2B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/openjdk:16-jdk-alpine
+#3 sha256:5d0d5df443d8b9dc0b6d051184362886f468279251840f5c9b5d4f472dbfecc0
+#3 DONE 1.2s
+
+#5 [internal] load build context
+#5 sha256:06eadb7de0a6eceb512cad064f4d94900b60ffa6a88b4b842ed9e9dd4219344e
+#5 transferring context: 1.13kB done
+#5 DONE 0.0s
+
+#4 [1/2] FROM docker.io/library/openjdk:16-jdk-alpine@sha256:49d822f4fa4deb5f9d0201ffeec9f4d113bcb4e7e49bd6bc063d3ba93aacbcae
+#4 sha256:bf8b9465191e9fb07be3ba466e37664387f76a18bfd32285143053baa56505fb
+#4 CACHED
+
+#6 [2/2] COPY Calculator.jar ./app
+#6 sha256:57395a1132034f109a4b5a2c615883cee6db6098c244fc46c2ffd7116fcccb46
+#6 DONE 0.1s
+
+#7 exporting to image
+#7 sha256:e8c613e07b0b7ff33893b694f7759a10d42e180f2b4dc349fb57dc6b71dcab00
+#7 exporting layers 0.0s done
+#7 writing image sha256:c73acd6bdc91ef2f2870070c771336b163c05e5314d8a82f560c2a7aeec6697a
+#7 writing image sha256:c73acd6bdc91ef2f2870070c771336b163c05e5314d8a82f560c2a7aeec6697a done
+#7 naming to docker.io/library/calculatorapp done
+#7 DONE 0.1s
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage (hide <#>)
+[Pipeline] { (Push Docker Image) (hide <#>)
+[Pipeline] withCredentials (hide <#>)
+Masking supported pattern matches of $DOCKERUSER or $DOCKERPASS
+[Pipeline] { (hide <#>)
+[Pipeline] sh (hide <#>)
++ docker login -u **** -p **** localhost:8082
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store <https://docs.docker.com/engine/reference/commandline/login/#credentials-store>
+
+Login Succeeded
+[Pipeline] sh (hide <#>)
++ docker tag calculatorapp localhost:8082/calculatorapp:v1.0
+[Pipeline] sh (hide <#>)
++ docker push localhost:8082/calculatorapp:v1.0
+The push refers to repository [localhost:8082/calculatorapp]
+812b2a0e9aba: Preparing
+6205925ca10a: Preparing
+627070616b39: Preparing
+1119ff37d4a9: Preparing
+627070616b39: Layer already exists
+1119ff37d4a9: Layer already exists
+6205925ca10a: Layer already exists
+812b2a0e9aba: Pushed
+v1.0: digest: sha256:f8957642cbac38f6ab58c70a9b57dfc735d8ccec3d438c38b2db6e46149fae49 size: 1158
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage (hide <#>)
+[Pipeline] { (Publish to Nexus Repository Manager) (hide <#>)
+[Pipeline] withCredentials (hide <#>)
+Masking supported pattern matches of $NEXUSUSER or $NEXUSPASS
+[Pipeline] { (hide <#>)
+[Pipeline] sh (hide <#>)
++ curl -v -u ****:**** --upload-file Calculator.jar http://nexus:8081/repository/raw-nexus/ <http://nexus:8081/repository/raw-nexus/>
+* Expire in 0 ms for 6 (transfer 0x55ea9cbfff90)
+* Expire in 1 ms for 1 (transfer 0x55ea9cbfff90)
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 1 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 1 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 1 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 1 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 1 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 1 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 1 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 1 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 1 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 1 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 1 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 1 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 1 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 1 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 1 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 1 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 1 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 1 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 1 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 1 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 1 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 1 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 1 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 1 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 1 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 1 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 1 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 1 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 1 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 1 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 2 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 2 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 2 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 2 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 2 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 2 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 2 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 2 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 2 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 2 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 2 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 2 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+* Expire in 0 ms for 1 (transfer 0x55ea9cbfff90)
+*   Trying 172.18.0.2...
+* TCP_NODELAY set
+* Expire in 200 ms for 4 (transfer 0x55ea9cbfff90)
+* Connected to nexus (172.18.0.2) port 8081 (#0)
+* Server auth using Basic with user ****
+> PUT /repository/raw-nexus/Calculator.jar HTTP/1.1
+> Host: nexus:8081
+> Authorization: Basic YWRtaW46YWRtaW4=
+> User-Agent: curl/7.64.0
+> Accept: */*
+> Content-Length: 1088
+> Expect: 100-continue
+> 
+* Expire in 1000 ms for 0 (transfer 0x55ea9cbfff90)
+< HTTP/1.1 100 Continue
+} [1088 bytes data]
+* We are completely uploaded and fine
+< HTTP/1.1 201 Created
+< Date: Fri, 05 Mar 2021 23:37:23 GMT
+< Server: Nexus/3.29.2-02 (OSS)
+< X-Content-Type-Options: nosniff
+< Content-Security-Policy: sandbox allow-forms allow-modals allow-popups allow-presentation allow-scripts allow-top-navigation
+< X-XSS-Protection: 1; mode=block
+< Content-Length: 0
+< 
+
+100  1088    0     0  100  1088      0  29405 --:--:-- --:--:-- --:--:-- 29405
+* Connection #0 to host nexus left intact
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage (hide <#>)
+[Pipeline] { (CleanResources) (hide <#>)
+[Pipeline] cleanWs (hide <#>)
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] done
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
+
+REST API <http://localhost:8080/job/Calculator%20App%20Jenkins/57/api/>
+Jenkins 2.281 <https://jenkins.io/>
+

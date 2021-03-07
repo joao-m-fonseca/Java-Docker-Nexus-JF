@@ -33,7 +33,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'docker', passwordVariable: 'DOCKERPASS', usernameVariable: 'DOCKERUSER')]) {
                 sh ' docker login -u $DOCKERUSER -p $DOCKERPASS localhost:8082'
                 sh ' docker tag ${DOCKER_IMAGE_NAME} localhost:8082/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} '
-                sh 'docker push localhost:8082/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} '
+                sh ' docker push localhost:8082/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} '
                // sh 'docker run -d -p ${DOCKER_CONTAINER_PORT}:8085  --name "${DOCKER_CONTAINER_NAME}" "${DOCKER_IMAGE_NAME}"'
                 }
             }
@@ -63,9 +63,9 @@ def sonarScanner(projectKey) {
         }
             else {
             withCredentials([string(credentialsId: 'Sonarqube-Server', variable: 'SONAR')]) {
-                  sh "${scannerHome}/bin/sonar-scanner -Dsonar.host.url=http://sonarqube:9000 -Dsonar.login=$SONAR -Dsonar.projectKey=java-calculator -Dsonar.java.libraries=**/*.jar -Dsonar.projectVersion=${BUILD_NUMBER}"
+                  sh "${scannerHome}/bin/sonar-scanner -Dsonar.host.url=http://sonarqube:9000 -Dsonar.login=$SONAR -Dsonar.projectKey=java-calculator -Dsonar.java.libraries=./*.jar -Dsonar.projectVersion=${BUILD_NUMBER}"
         }
-    } 
+    }
   }
 
    // timeout(time: 10, unit: 'MINUTES') {
